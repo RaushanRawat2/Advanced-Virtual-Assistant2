@@ -18,7 +18,7 @@ import { userDataContext } from "../context/UserContext";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {serverUrl}= useContext(userDataContext)
+  const {serverUrl,userData,setUserData}= useContext(userDataContext)
   const navigate = useNavigate();
   const [name, setname] = useState("");
   const [email, setEmail] = useState("");
@@ -35,10 +35,12 @@ const SignUp = () => {
         name,email,password
       },{withCredentials:true});
       setLoading(false);
-      console.log(result);
+      setUserData(result.data)
+      navigate("/customize")
       
     }catch(err){
      console.log(err);
+     setUserData(null)
      setLoading(false)
      setError(err.response.data.message)
      

@@ -18,7 +18,7 @@ import { userDataContext } from "../context/UserContext";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {serverUrl}= useContext(userDataContext)
+  const {serverUrl,userData,setUserData}= useContext(userDataContext)
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,11 +33,13 @@ const SignIn = () => {
       let result = await axios.post(`${serverUrl}/api/auth/signin`,{
         email,password
       },{withCredentials:true});
-      console.log(result);
+      setUserData(result.data)
       setLoading(false)
+      navigate("/")
       
     }catch(err){
      console.log(err);
+     setUserData(null)
       setLoading(false)
      
      setError(err.response.data.message)
@@ -82,7 +84,7 @@ const SignIn = () => {
 
       {/* Overlay Form */}
       <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10">
-        <form className="w-[90%] h-[700px] max-w-[600px] bg-[#00000044] backdrop-blur-md shadow-lg shadow-black flex flex-col items-center justify-center gap-[20px] rounded-xl px-[20px]" onSubmit={handleSignIn}>
+        <form className="w-[90%] h-[700px] max-w-[600px] bg-[#00000044] backdrop-blur-md shadow-lg shadow-black flex flex-col items-center justify-center gap-[20px] rounded-xl px-[20px]" onSubmit={handleSignIn} autoComplete="off">
           <h1 className="text-white text-[30px] font-semibold mb-[10px]">
             Sign In to <span className="text-amber-600">Vertual-Assistant</span>
           </h1>
