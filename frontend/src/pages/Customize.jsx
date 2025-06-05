@@ -9,6 +9,7 @@ import AI7 from '../assets/AI7.jpg'
 import Card from '../assets/components/Card'
 import { userDataContext } from '../context/UserContext';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { IoArrowBackSharp } from 'react-icons/io5';
 
 
 const Customize = () => {
@@ -26,7 +27,9 @@ const Customize = () => {
   }
 
   return (
-    <div className='w-full h-[100vh] bg-gradient-to-t from-[rgb(0,0,0)] to-[#8da5ec] flex justify-center items-center flex-col'>
+    <div className='w-full h-[100vh] bg-gradient-to-t from-[rgb(0,0,0)] to-[#2145b4] flex justify-center items-center flex-col'>
+      <IoArrowBackSharp className='absolute top-[30px] left-[30px] text-white w-[25px] h-[25px] font-bold cursor-pointer'onClick={()=>navigate("/")} />
+
       <h1 className='text-white text-[30px] text-center mb-[30px] font-sans font-bold'>Select your <span className='text-[33px] text-blue-300 font-bold'>Assistant image</span></h1>
         <div className='w-[90%] max-w-[900px] flex justify-center items-center flex-wrap gap-[17px]'>
           <Card image={AI1}/>
