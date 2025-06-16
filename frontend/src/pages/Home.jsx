@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import aiImg from '../assets/ai.gif'
+import aiImg from '../assets/AI.gif'
 import userImg from '../assets/voice.gif'
 import { TbMenuDeep } from "react-icons/tb";
 import { RxCross1 } from "react-icons/rx";
